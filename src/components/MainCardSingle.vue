@@ -1,25 +1,60 @@
+<template>
+  <RouterLink :to="{ name: 'CardDetails', params: { id: username }}">
+    <div class="card">
+      <img :src="image" class="card-image" alt="Card image" />
+      <div class="card-content">
+        <p class="card-title">{{ fullname }}</p>
+        <p class="card-job">{{ job_title }}</p>
+        <p class="card-bio">{{ bio }}</p>
+      </div>
+    </div>
+  </RouterLink>
+</template>
+
 <script setup>
-import { faker } from '@faker-js/faker'
-
-const firstname = faker.person.firstName()
-const lastname = faker.person.lastName()
-const fullname = faker.person.fullName({firstName: firstname, lastName:lastname})
-const job_title = faker.person.jobTitle()
-const bio = faker.lorem.lines (2)
-const username = faker.internet.userName({firstName: firstname, lastName:lastname}).toLowerCase()
-
+defineProps(['fullname', 'jobTitle', 'bio', 'image', 'username']);
 </script>
 
-<template>
-    <!-- {{ fullname }} <br /> -->
-    <RouterLink :to="{name: 'CardDetails', params: {id: username}}">
-    <div class="border border-gray-400 rounded-1g shadow bg-gray-200 h-full"> 
-            <img :src="faker.image.urlLoremFlickr({category: 'house'})" class="rounded-t-x1" />
-            <div class="p-4">
-                <p class="mb-2 text-2x1 font-bold">{{ fullname }}</p>
-                <p class="mb-3 font-normal text-gray-700"> {{job_title}}</p> 
-                <p class="mb-3 font-normal ☐text-gray-700"> {{ bio }}</p> 
-            </div>
-    </div> 
-    </RouterLink>  
-</template>
+<style scoped>
+.card {
+  background-color: #4caf50; 
+  border-radius: 12px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s, box-shadow 0.3s; 
+  overflow: hidden; 
+  cursor: pointer; 
+  height: 400px; 
+  color: white; 
+}
+
+.card:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.card-image {
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+}
+
+.card-content {
+  padding: 20px; 
+  height: 180px; 
+}
+
+.card-title {
+  font-size: 1.2em; 
+  margin-bottom: 5px; 
+}
+
+.card-job {
+  font-size: 0.9em; 
+  margin-bottom: 10px; 
+}
+
+.card-bio {
+  font-size: 0.8em; 
+  line-height: 1.5; 
+}
+</style>
