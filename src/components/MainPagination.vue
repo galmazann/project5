@@ -4,7 +4,7 @@
 
     <button @click="prevPage" :disabled="activePage === 1" class="rounded-md bg-slate-100 p-2 font-medium text-slate-700 shadow-md">PREV</button>
     
-    <button v-for="page in pages" key="page" class="rounded-md ■bg-slate-100 p-2 font-medium text-slate-780 shadow-md" :class="page === activePage? 'bg-yellow-700 text-slate-100': '' "> {{ page }}</button>
+    <button v-for="page in pages" key="page" class="rounded-md ■bg-slate-100 p-2 font-medium text-slate-780 shadow-md" :class="page === activePage? 'bg-green-700 text-slate-100': '' "> {{ page }}</button>
 
     <button @click="nextPage" :disabled="activePage === pages" class="rounded-md bg-slate-100 p-2 font-medium text-slate-700 shadow-md">NEXT</button>
 
